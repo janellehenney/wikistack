@@ -1,17 +1,21 @@
-const express = require("express");
-const addPage = require("/views/addPage");
+const express = require('express');
+const { addPage } = require('../views');
 const wikiRouter = express.Router();
 
-wikiRouter.get("/", (req, res, next) => {
+wikiRouter.get('/', (req, res, next) => {
   try {
-    res.send("entered wikirouter home");
+    res.send('entered wikirouter home');
   } catch (err) {
     next(err);
   }
 });
 
-wikiRouter.get("/add", (req, res, next) => {
-  res.send(addPage());
+wikiRouter.post('/', (req, res, next) => {
+  res.send('got to POST /wiki/');
+});
+
+wikiRouter.get('/add', (req, res, next) => {
+  res.send('got to GET /wiki/add');
 });
 
 module.exports = wikiRouter;
